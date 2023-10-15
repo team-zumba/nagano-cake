@@ -9,8 +9,8 @@
 
 # データベースに初期データを追加する処理を記述するファイル
 
+################### 管理者
 # create = new + save
-# 管理者
 Admin.create!(
   email: 'admin@admin',
   encrypted_password: 'adminmin',
@@ -19,7 +19,7 @@ Admin.create!(
 )
 
 
-# 顧客（山田太郎）
+################### 顧客（山田太郎）
 5.times do |num| #num = 0~4が入る
   num += 1
   Customer.create!(
@@ -38,7 +38,8 @@ Admin.create!(
   )
 end
 
-# 顧客（山田花子）
+
+################### 顧客（山田花子）
 4.times do |num|
   num += 6
   Customer.create!(
@@ -55,8 +56,10 @@ end
     password: 'yamadahanako',
     is_active: true
     )
-end 
+end
 
+
+################### 登録住所
 9.times do |num|
   num += 1
   Address.create!(
@@ -65,4 +68,76 @@ end
     address: "大阪府難波ずんずんマンション1",
     postal_code: "123-9876"
     )
+end
+
+
+################### ジャンル
+genres = [
+  'ケーキ',
+  'チーズケーキ',
+  'タルト',
+  'パウンドケーキ',
+  'その他'
+]
+
+genres.each do |genre|
+  Genre.create!(
+    name: genre
+  )
+end
+
+
+################### アイテム（ケーキ）
+items_array = [
+  # ケーキ（ジャンルID:0）
+  [
+    'ショートケーキ',
+    'チョコレートケーキ',
+    'モンブランケーキ',
+    'ブッシュドノエル'
+  ],
+
+  # チーズケーキ（ジャンルID:1）
+  [
+    'レアチーズケーキ',
+    'ベイクドチーズケーキ',
+    'スフレチーズケーキ',
+    'ニューヨークチーズケーキ'
+  ],
+
+  # タルト（ジャンルID:2）
+  [
+    'かぼちゃタルト',
+    '栗のタルト',
+    'さつまいもタルト',
+    'タルトタタン'
+  ],
+
+  # パウンドケーキ（ジャンルID:3）
+  [
+    'マーブルパウンドケーキ',
+    'プレーンパウンドケーキ',
+    'チョコレートパウンドケーキ',
+    '抹茶パウンドケーキ'
+  ],
+
+  # その他（ジャンルID:4）
+  [
+    'シュークリーム',
+    'プリン',
+    'マドレーヌ'
+  ]
+]
+
+items_array.each_with_index do |items, i| #iはジャンルIDになる
+  items.each_with_index do |item, j|
+    Item.create!(
+      genre_id: i,
+      name: item,
+      introduction: "#{item}の説明です。こだわりの味。",
+      price: 500,
+      is_active: true,
+      image: File.open("app/images/item-#{i+1}-#{j+1}")
+    )
+  end
 end
