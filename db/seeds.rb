@@ -13,23 +13,46 @@
 # 管理者
 Admin.create!(
   email: 'admin@admin',
-  encrypted_password: 'admin'
+  encrypted_password: 'adminmin',
+  password: 'adminmin',
+  password_confirmation: 'adminmin',
 )
 
 
 # 顧客（山田太郎）
-5.times do |num| #num = 0~9が入る
+5.times do |num| #num = 0~4が入る
   num += 1
   Customer.create!(
     last_name: "山田",
     first_name: "太郎#{num}", #ループごとに太郎1~太郎10
     last_name_kana: 'ヤマダ',
     first_name_kana: "タロウ#{num}",
-    postal_cord: "#{num}23-4567",
+    postal_code: "#{num}23-4567",
     address: "東京都新宿区ズンバタワー#{num}",
     telephone_number: "090-123-456#{num}",
     email: "yamada@taro#{num}",
     encrypted_password: 'yamadataro',
+    password: 'yamadataro',
+    password_confirmation: 'yamadataro',
     is_active: true
   )
 end
+
+# 顧客（山田花子）
+4.times do |num|
+  num += 6
+  Customer.create!(
+    last_name: "山田",
+    first_name: "花子#{num}",
+    last_name_kana: "ヤマダ",
+    first_name_kana: "ハナコ#{num}",
+    postal_code: "#{num}23-4567",
+    address: "東京都新宿区ズンバタワー#{num}",
+    telephone_number: "090-123-456#{num}",
+    email: "yamada@hanako#{num}",
+    encrypted_password: 'yamadahanako',
+    password_confirmation: 'yamadahanako',
+    password: 'yamadahanako',
+    is_active: true
+    )
+end 
