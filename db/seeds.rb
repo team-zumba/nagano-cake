@@ -56,3 +56,13 @@ end
     is_active: true
     )
 end 
+
+9.times do |num|
+  num += 1
+  Address.create!(
+    customer_id: num,
+    name: "株式会社ズンバ",
+    address: "大阪府難波ずんずんマンション1",
+    postal_code: "123-9876"
+    )
+end
