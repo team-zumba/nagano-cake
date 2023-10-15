@@ -137,7 +137,7 @@ items_array.each_with_index do |items, i| #iはジャンルIDになる
       introduction: "#{item}の説明です。こだわりの味。",
       price: 500,
       is_active: true,
-      image: File.open("app/images/item-#{i+1}-#{j+1}")
+      image: File.open("app/images/item-#{i+1}-#{j+1}.jpg")
     )
   end
 end
