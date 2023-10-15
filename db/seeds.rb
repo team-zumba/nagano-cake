@@ -131,13 +131,15 @@ items_array = [
 
 items_array.each_with_index do |items, i| #iはジャンルIDになる
   items.each_with_index do |item, j|
-    Item.create!(
+    item = Item.create!(
       genre_id: i,
       name: item,
       introduction: "#{item}の説明です。こだわりの味。",
       price: 500,
-      is_active: true,
-      image: File.open("app/images/item-#{i+1}-#{j+1}.jpg")
+      is_active: true
     )
+
+    # 画像を登録
+    item.image.attach(io: File.open(Rails.root.join("app/assets/images/item-#{i+1}-#{j+1}.jpg")), filename: "item-#{i+1}-#{j+1}.jpg")
   end
 end
