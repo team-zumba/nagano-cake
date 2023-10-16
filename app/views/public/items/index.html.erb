@@ -6,9 +6,9 @@
         
         <div class="col-md-8">
             <div class="row row-cols-4">
-            <h4>商品一覧 全<%= @items.@item.count %>件</h4>
+            <h4>商品一覧 全<%= @items.count %>件</h4>
             <% @items.each do |item| %>
-            <%= image_tag @item.image %>
+            <%= image_tag item.image %>
             <%= item.name %>
             <%= item.price %>
             <% end %>
