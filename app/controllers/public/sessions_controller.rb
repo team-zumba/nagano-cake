@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :customer_state, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -30,8 +30,6 @@ class Public::SessionsController < Devise::SessionsController
       
       if @customer.is_active == false
         redirect_to new_customer_registration_path
-      else
-        redirect_to customer_session_path
       end  
     
     end
