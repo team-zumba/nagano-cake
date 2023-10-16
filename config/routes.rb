@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :customers
     resources :homes
     resources :items
-    resources :orders
+    resources :orders, only: [:index]
     resources :application
   end
   
