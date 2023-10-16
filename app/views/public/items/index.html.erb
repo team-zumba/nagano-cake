@@ -1,17 +1,23 @@
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-3">
             <!--ジャンル一覧表をrenderで追加予定-->
         </div>
         
         <div class="col-md-8">
+            <div>
+                <h4>商品一覧 全<%= @items.count %>件</h4>
+            </div>
             <div class="row row-cols-4">
-            <h4>商品一覧 全<%= @items.count %>件</h4>
-            <% @items.each do |item| %>
-            <%= image_tag item.image %>
-            <%= item.name %>
-            <%= item.price %>
-            <% end %>
+                <% @items.each do |item| %>
+                <div class="d-block">
+                <%= image_tag item.image, size: "150x100" %>
+                </br>
+                <%= item.name %>
+                <%= item.price %>
+                </div>
+                <% end %>
+            </div>
             </div>
         </div>
         
