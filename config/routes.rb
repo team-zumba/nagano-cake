@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :items
     resources :orders, only: [:index]
     resources :application
+    get 'genres/filter/:id' => 'genres#fliter', as: :genres_filter
   end
   
   namespace :admin do
