@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
+  root 'public/homes#top'
+  
   namespace :public do
     resources :addresses
     resources :cart_items
