@@ -5,4 +5,10 @@ class Item < ApplicationRecord
     has_many :customers, through: :cart_items
     
   has_one_attached :image
+  
+  
+  def item_price
+    price * 1.1
+  end
+  
 end
