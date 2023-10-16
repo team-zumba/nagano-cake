@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :application
   end
   
-  namspace :admin do
+  namespace :admin do
     resources :customers
     resources :genres
     resources :homes
