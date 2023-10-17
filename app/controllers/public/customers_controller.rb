@@ -1,22 +1,22 @@
 class Public::CustomersController < ApplicationController
     
     def show
-        @customer = Customer.find(params[:id])
+        @customer = current_customer
         @addresses = @customer.addresses.all
         @orders = @customer.orders.all
     end 
     
     def edit 
-        @customer = Customer.find(params[:id])
+        @customer = current_customer
     end 
     
     def update
         @customer = Customer.find(params[:id])
         @customer.update(customer_params)
-        redirect_to edit_public_customer(@customer.id)
+        redirect_to edit_customer_path(@customer.id)
     end 
     
-    def confirmation
+    def check
     end 
     
     private
