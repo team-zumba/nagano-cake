@@ -6,7 +6,7 @@
     <div class="d-block">
         <%= image_tag item.image, size: "150x100" %>
         </br>
-        <%= link_to item.name, public_item_path(item.id) %>
+        <%= link_to item.name, item_path(item.id) %>
         </br>
         ¥<%= item.price %>
     </div>
