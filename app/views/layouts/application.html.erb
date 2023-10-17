@@ -15,23 +15,23 @@
     <header>
     <% if customer_signed_in? %>
       <li>
-        <%= link_to "マイページ", new_cusutomer_registration_path %>
+        <%= link_to "マイページ", customer_session_path(current_customer.id) %>
       </li>
       <li>
-        <%= link_to "商品一覧", new_cusutomer_registration_path %>
+        <%= link_to "商品一覧", admin_items_path %>
       </li>
       <li>
-        <%= link_to "カート", new_cusutomer_registration_path %>
+        <%= link_to "カート", public_cart_items_path %>
       </li>
       <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
-        <%= link_to "About", new_cusutomer_registration_path %>
+        <%= link_to "About", about_path %>
       </li>
       <li>
-        <%= link_to "商品一覧", new_cusutomer_registration_path %>
+        <%= link_to "商品一覧", admin_items_path %>
       </li>
       <li>
         <%= link_to "新規登録", new_cusutomer_registration_path %>
