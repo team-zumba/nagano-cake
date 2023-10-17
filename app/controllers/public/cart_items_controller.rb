@@ -5,7 +5,7 @@ class Public::CartItemsController < ApplicationController
     end
     
     def create
-        redirect_to public_cart_items_path
+        redirect_to cart_items_path
     end 
     
 end
