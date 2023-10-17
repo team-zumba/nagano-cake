@@ -29,15 +29,17 @@ Rails.application.routes.draw do
     resources :confirmation
     resources :customers
     resources :homes
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      collection do
+        get 'genres/:id' => 'items#genre', as: 'genre'
+      end
+    end
     resources :orders do
       collection do
         post :check
         get :complete
       end
     end
-    resources :application
-    get 'genres/filter/:id' => 'genres#fliter', as: :genres_filter
   end
   
   namespace :admin do
