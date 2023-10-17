@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   root 'public/homes#top'
   
-  namespace :public do
+  scope module: :public do
     resources :addresses
     resources :cart_items
     resources :confirmation
