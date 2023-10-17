@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
   
   root 'public/homes#top'
+  get 'about' => 'public/homes#about', as: 'about'
   
   scope module: :public do
     

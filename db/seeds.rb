@@ -26,7 +26,7 @@ Admin.create!(
     last_name: "山田",
     first_name: "太郎#{num}", #ループごとに太郎1~太郎10
     last_name_kana: 'ヤマダ',
-    first_name_kana: "タロウ#{num}",
+    first_name_kana: "タロウ",
     postal_code: "#{num}23-4567",
     address: "東京都新宿区ズンバタワー#{num}",
     telephone_number: "090-123-456#{num}",
@@ -46,7 +46,7 @@ end
     last_name: "山田",
     first_name: "花子#{num}",
     last_name_kana: "ヤマダ",
-    first_name_kana: "ハナコ#{num}",
+    first_name_kana: "ハナコ",
     postal_code: "#{num}23-4567",
     address: "東京都新宿区ズンバタワー#{num}",
     telephone_number: "090-123-456#{num}",
