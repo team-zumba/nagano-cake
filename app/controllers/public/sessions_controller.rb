@@ -22,7 +22,7 @@ class Public::SessionsController < Devise::SessionsController
   
   def customer_state
     
-    @customer = Customer.find_be(email: params[:customer][:emaill])
+    @customer = Customer.find_by(email: params[:customer][:emaill])
     
     return if  !@customer
     
