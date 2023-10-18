@@ -1,44 +1,41 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-center">
         <p class="col-md-1 bg-light text-center mt-3">商品一覧</p>
-        <%= link_to new_admin_item_path do %>
-        <i class="fa-duotone fa-circle-plus fa-2xs" style="--fa-primary-color: #c0c0c0; --fa-primary-opacity: 0.5; --fa-secondary-color: #ffffff;"> </i>
-        <% end %>
+        <div class="col-md-1 offset-9 align-items-center pt-3">
+            <%= link_to new_admin_item_path, style: "color: #dc3545; font-size: 20px" do %>
+            <i class="fa-solid fa-circle-plus fa-xl"></i>
+            <% end %>
+        </div>
     </div>
     
-    <div class="row justify-content-center mx-0">
-    <div class="col-md-12">
-    <table>
-        <thead>
-            <tr>
-                <th class="col-md-2">商品ID</th>
-                <th class="col-md-3">商品名</th>
-                <th class="col-md-2">税抜価格</th>
-                <th class="col-md-3">ジャンル</th>
-                <th class="col-md-2">ステータス</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
+    <div class="row justify-content-center bg-light mx-5 border-top py-2">
+                <div class="col-md-2"><strong>商品ID</strong></div>
+                <div class="col-md-3"><strong>商品名</strong></div>
+                <div class="col-md-2"><strong>税抜価格</strong></div>
+                <div class="col-md-2"><strong>ジャンル</strong></div>
+                <div class="col-md-2 px-0"><strong>ステータス</strong></div>
+    </div>
+
                 <% @items.each do |item| %>
-                    <tr>
-                        <td class="col-md-2"><%= item.id %></td>
-                        <td class="col-md-3"><%= item.name %></td>
-                        <td class="col-md-2"><%= item.price %></td>
-                        <td class="col-md-3"><%= item.genre.name %></td><!--不明-->
-                        <td class="col-md-2">
-                            <% if item.is_active == true %>
-                            <%= "販売中" %>
-                            <% else %>
-                            <%= "販売停止中" %>
+                <div class="row justify-content-center mx-5 py-1">
+                        <div class="col-md-2"><%= item.id %></div>
+                        <div class="col-md-3">
+                            <%= link_to admin_item_path(item.id), style: "color: #000000" do %>
+                            <u><%= item.name %></u>
                             <% end %>
-                        </td>
-                    </tr>
+                        </div>
+                        <div class="col-md-2"><%= item.price %></div>
+                        <div class="col-md-2"><%= item.genre.name %></div>
+                        <div class="col-md-2 px-0">
+                            <% if item.is_active == true %>
+                            <p class="text-success"><%= "販売中" %></p>
+                            <% else %>
+                            <p><%= "販売停止中" %></p>
+                            <% end %>
+                        </div>
+                </div>
                 <% end %>
-            
-        </tbody>
-        
-    </table>
+
     </div>
     </div>
     
