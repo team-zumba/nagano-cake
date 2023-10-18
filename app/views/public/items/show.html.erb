@@ -25,7 +25,8 @@
                 <div class="col-md-5"></div>
                 <div class="col-md-7 d-flex justify-content-end">
                     <div class="form-group pr-5">
-                        <%= form_with url: cart_items_path, method: :post do |f| %>
+                        <%= form_with model: @cart_item, method: :post do |f| %>
+                        <%= f.hidden_field :item_id, :value => @item.id %>
                         <%= f.select :amount, [["1個", "1"], ["2個", "2"], ["3個", "3"], ["4個", "4"], ["5個", "5"]], include_blank: "個数選択" %>
                         <%= f.submit 'カートに入れる', class:"btn btn-success btn-sm"%>
                         <% end %>
