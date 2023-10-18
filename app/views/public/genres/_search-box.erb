@@ -7,15 +7,13 @@
   <tbody>
     <tr>
       <td class="mb-3 px-4">
-        <%= link_to '全商品', genres_filter_path(0), remote: true %>
+        <%= link_to '全商品', items_path %>
       </td>
     </tr>
     <% @genres.each do |genre| %>
       <tr>
         <td class="mb-3 px-4">
-          <%= link_to genres_filter_path(genre.id), remote: true do %>
-            <%= genre.name %>
-          <% end %>
+          <%= link_to genre.name, genre_items_path(genre.id) %>
         </td>
       </tr>
     <% end %>
