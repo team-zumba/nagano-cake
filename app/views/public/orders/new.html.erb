@@ -1,0 +1,34 @@
+ <h3>注文情報入力</h3>
+    <%= form_with model: @order, url: check_orders_path, method: :get do |f|  %>
+ <h3>支払い方法</h3>
+ 　　<%= f.radio_button :payment_method, "credit_card" %>
+　　<%= f.label :payment_method_credit_card, "クレジットカード" %> <br>
+　　<%= f.radio_button :payment_method, "transfer" %>
+　　<%= f.label :payment_method_transfer, "銀行振込" %>
+ <h3>お届け先</h3>
+ 　  <%= f.radio_button :address_type, "member_address", checked: true %>
+    <%= f.label :address_type, "ご自身の住所" %> <br>
+    〒<%= current_customer.postal_code + "　" + current_customer.address + "　" + current_customer.last_name + current_customer.first_name %>
+ 　 
+ 　  <br>
+ 　  <%= f.radio_button :address_type, [:registered_address] %>
+    <%= f.label :address_type,"登録済住所から選択" %> <br>
+    <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+    
+    <br>
+    <%= f.radio_button :address_type, "new_address" %>
+    <%= f.label :address_type, "新しいお届け先" %>
+    <br>
+    <%= f.label :address_postal_code, "郵便番号" %>
+    <%= f.text_field :address_postal_code %>
+    <br>
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address %>
+    <br>
+    <%= f.label :address_name, "宛名" %>
+    <%= f.text_field :address_name %>
+    <br>
+    <%= f.submit "確認画面へ進む" %>
+ 
+ 
+    <% end %>
