@@ -8,7 +8,11 @@ class Public::ItemsController < ApplicationController
     
     def show
         @item = Item.find(params[:id])
-        @cart_item = CartItem.new
+        if @item.is_active
+            @cart_item = CartItem.new
+        else
+            redirect_to items_path
+        end
     end 
 
     def genre
