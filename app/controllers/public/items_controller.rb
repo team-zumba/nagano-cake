@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
     
     def index
-        @items = Item.all
+        @items = Item.where(is_active: true)
         @select_genre_name = '商品'
         @genres = Genre.all
     end
@@ -14,7 +14,7 @@ class Public::ItemsController < ApplicationController
     def genre
         @genres = Genre.all
         @select_genre_name = Genre.find(params[:id]).name
-        @items = Item.where(genre_id: params[:id])
+        @items = Item.where(genre_id: params[:id], is_active: true)
     end
     
     private
