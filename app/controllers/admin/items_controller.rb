@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
     
     def new
-        @item = Item.new(item_params)
+        @item = Item.new
         @genres = Genre.all
         select_genres = @genres.pluck(:name)
         
@@ -41,13 +41,13 @@ class Admin::ItemsController < ApplicationController
     def update
         @item = Item.find(params[:id])
         @item.update(item_params)
-        redirect_to edit_admin_item_path(@item.id)
+        redirect_to admin_item_path(@item.id)
     end 
     
     private
     
     def item_params
-        params.permit(:name, :genre_id, :introduction, :image, :price, :is_active)
+        params.require(:item).permit(:name, :genre_id, :introduction, :image, :price, :is_active)
     end 
     
 end

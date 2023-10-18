@@ -1,7 +1,7 @@
 <div class="container">
     
     <div class="row py-4">
-        <div class="col-md-2 bg-light text-center px-0">商品新規登録</div>
+        <div class="col-md-2 bg-light text-center px-0">商品編集</div>
     </div>
     
     <div class="row">
@@ -37,12 +37,10 @@
         
         <div class="row mb-3">
             <div class="col-md-3">販売ステータス</div>
-            <div class="form-group col-md-6">
-                <label>
-                    <input type="radio" name="is_active" value="true">販売中　　
-                    <input type="radio" name="is_active" value="false">販売停止中
-                </label>
-            </div>
+            <%= f.radio_button :is_active, "true" %>
+            <%= f.label :is_active, "販売中" %>　　　
+            <%= f.radio_button :is_active, "false" %>
+            <%= f.label :is_active, "販売停止中" %>
         </div>
         <div class="row mb-3 justify-content-center">
             <div class="col-md-4"><%= f.submit '変更を保存', class:"btn btn-success" %></div>
