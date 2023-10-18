@@ -7,6 +7,7 @@ class Public::HomesController < ApplicationController
     @rand_items.sample(5)
 
     # 新規作成順に並び替えて、10件のItemモデルを取得
-    @new_items = Item.order(created_at: :desc).limit(10)
+    @new_items = Item.where(is_active: true)
+    @new_items.order(created_at: :desc).limit(10)
   end
 end
