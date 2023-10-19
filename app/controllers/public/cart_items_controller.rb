@@ -18,15 +18,14 @@ class Public::CartItemsController < ApplicationController
             cart_item.customer_id = current_customer.id
             cart_item.save
         end
-
-        redirect_to cart_items_path
+        redirect_to cart_items_path, notice: "#{Item.find(cart_items_params[:item_id]).name}を#{cart_items_params[:amount]}個カートに追加しました。"
     end
 
     def update
         cart_item = CartItem.find_by(customer_id: current_customer.id, item_id: params[:cart_item][:item_id])
         if cart_item.amount.to_i == params[:cart_item][:amount].to_i
-            # 同じ数々なら
-            redirect_back fallback_location: root_path, alert: "数量は変更されていません。"
+            # 同じ数なら
+            redirect_back fallback_location: root_path, alert: "#{cart_item.item.name}の数量が#{cart_item.amount}個のまま変化がありません。"
         else
             # 数が変更されているなら
             cart_item.update(amount: params[:cart_item][:amount])
