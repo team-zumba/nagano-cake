@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   ########## admin ##########
   
   namespace :admin do
-    get '/' => 'homes#top', as: 'root'
+    get '/' => 'homes#index', as: 'root'
 
     resources :customers,     except: [:new, :create, :destroy]
     resources :genres,        except: [:new, :show, :destroy]
