@@ -143,3 +143,41 @@ items_array.each_with_index do |items, i| #iはジャンルIDになる
     item.image.attach(io: File.open(Rails.root.join("app/assets/images/item-#{i+1}-#{j+1}.jpg")), filename: "item-#{i+1}-#{j+1}.jpg")
   end
 end
+
+
+################### 注文
+
+Customer.all.count.times do |i|
+  i += 1
+
+  customer = Customer.find(i) #ユーザーID1~9の顧客かループ毎に取得される
+
+  Order.create!(
+    customer_id: i, #1~9
+    address: customer.address,
+    name: customer.last_name + customer.first_name,
+    postal_code: customer.postal_code,
+    total_payment: 9999,
+    shipping_cost: 800,
+    status: rand(0..4), #0~4の数値がランダムで代入される
+    payment_method: rand(0..1)
+  )
+end
+
+
+
+################### 注文詳細
+
+Order.all.count.times do |i|
+  i += 1
+
+  item_count = Item.all.count #アイテムの数を取得
+
+  OrderDetail.create!(
+    order_id: i,
+    item_id: rand(1..item_count), #1~アイテムの個数をランダムで取得
+    price: 999,
+    amount: rand(1..20), #1~20
+    making_status: rand(0..3)
+  )
+end
