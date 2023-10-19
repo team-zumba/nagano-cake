@@ -1,0 +1,25 @@
+<div class="container">
+  <%= render 'layouts/errors', obj: @genre %>
+
+  <div class="row">
+    <div class="col-12 col-md-7">
+      <h2>ジャンル編集</h2>
+
+      <%= form_with model: [:admin, @genre] do |f| %>
+        <div class="form-group">
+          <div class="row align-items-center">
+            <div class="col-2 text-nowrap">
+              <%= f.label :name, 'ジャンル名', class: 'mb-0' %>
+            </div>
+            <div class="col-6 ml-3">
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="col-3 ml-auto">
+              <%= f.submit '変更を保存', class: 'btn btn-success' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

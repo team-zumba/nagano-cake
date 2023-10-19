@@ -5,7 +5,19 @@ ja:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
   activerecord:
+    attributes:
+
+        # ここにモデル名とカラム名を入力するとエラーメッセージが和訳される
+        genre:
+          name: "ジャンル名"
+
     errors:
+      models:
+        genre:
+          attributes:
+            name:
+              format: "%{attribute}%{message}"
+              blank: は必須項目です
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
