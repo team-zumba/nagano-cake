@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md- bg-light text-center py-2 px-1">
+            注文履歴一覧
+        </div>
+    </div>
+    
+    <div class="row justify-content-center mt-3 bg-light py-2 border-top border-bottom">
+        <div class="col-md-3">購入日時</div>
+        <div class="col-md-3">購入者</div>
+        <div class="col-md-2">注文個数</div>
+        <div class="col-md-2">注文ステータス</div>
+    </div>
+    
+    <% @orders.each do |order| %>
+        <div class="row justify-content-center border-bottom" >
+            <div class="col-md-3 py-3">
+                <%= link_to admin_order_path(order) do %>
+                    <u><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></u>
+                <% end %>
+            </div>
+            
+            <div class="col-md-3 py-3">
+                <%= order.customer.last_name + order.customer.first_name %>
+            </div>
+        
+            <div class="col-md-2 py-3">
+                <% @total_amount = 0 %>
+                <% order.order_details.each do |order_detail| %>
+                    <%= @total_amount += order_detail.amount %>
+                <% end %>
+            </div>
+            
+            <div class="col-md-2 py-3">
+                <%= order.status_i18n %>
+            </div>
+        </div>
+    <% end %>
+    
+    
+</div>
