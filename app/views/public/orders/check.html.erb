@@ -8,6 +8,10 @@
 
 <p>ご請求金額</p>
 <%= @total.to_s(:delimited) %>
+
+<p>支払い方法</p>
+<%= @payment_method %>
+
 <p>お届け先</p>
 <%= @order.address %>
 

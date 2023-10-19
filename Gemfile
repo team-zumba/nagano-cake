@@ -60,3 +60,6 @@ gem 'devise'
 gem "enum_help"
 
 gem "kaminari"
+
+gem "pry-byebug"
+
