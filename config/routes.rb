@@ -9,53 +9,54 @@ Rails.application.routes.draw do
   }
   
   root 'public/homes#top'
-  get 'about' => 'public/homes#about', as: 'about'
-  
+
+
+  ########## public ##########
+
   scope module: :public do
-    
+    get 'about' => 'homes#about', as: 'about'
+
     get 'customers/my_page' => 'customers#show', as: 'customer'
     get 'customers/information_edit' => 'customers#edit', as: 'customers_information_edit'
-    patch 'customers/information' => 'customers#update', as: 'customers_information'
     get 'customers/check' => 'customers#check', as: 'customers_check'
+    patch 'customers/information' => 'customers#update', as: 'customers_information'
     patch 'customers/leave' => 'customers#leave', as: 'customers_leave'
     
-    resources :addresses
-    resources :cart_items do
-      collection do
-        delete :destroy_all
-      end
-    end
+    resources :customers,     only: [:show, :edit, :update]
+    resources :addresses,     except: [:new, :show]
     
-    resources :confirmation
-    resources :customers
-    resources :homes
-    resources :items, only: [:index, :show] do
+    resources :items,         only: [:index, :show] do
       collection do
         get 'genres/:id' => 'items#genre', as: 'genre'
       end
     end
-    resources :orders do
+
+    resources :cart_items,    except: [:new, :show, :edit] do
+      collection do
+        delete :destroy_all
+      end
+    end
+
+    resources :orders,        only: [:new, :create, :index] do
       collection do
         post :check
         get :complete
       end
     end
   end
+
+
+  ########## admin ##########
   
   namespace :admin do
-    
-    get 'orders/show' => 'orders#show', as: 'orders'
-    
-    resources :customers
-    resources :genres
-    resources :homes
-    resources :items
-    resources :order_details
-    resources :orders
+    get '/' => 'homes#top', as: 'root'
+
+    resources :customers,     except: [:new, :create, :destroy]
+    resources :genres,        except: [:new, :show, :destroy]
+    resources :items,         except: [:destroy]
+    resources :order_details, only: [:update]
+    resources :orders,        only: [:show, :update]
   end
   
-  
-  
-  # devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
