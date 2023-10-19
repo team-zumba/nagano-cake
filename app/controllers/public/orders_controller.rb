@@ -25,12 +25,13 @@ class Public::OrdersController < ApplicationController
       redirect_to orders_new_path
     end
     @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
-    if params[:order][:payment_method] == "credit_card"
-      @payment_method = "クレジットカード"
-    else 
-      @payment_method = "銀行振込"
-    end
+    @total = 0
+    @payment_method = params[:order][:payment_method] 
+    # if params[:order][:payment_method] == "credit_card"
+    #   @payment_method = "クレジットカード"
+    # else 
+    #   @payment_method = "銀行振込"
+    # end
   
   end
   
