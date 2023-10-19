@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update', as: 'customers_information'
     patch 'customers/leave' => 'customers#leave', as: 'customers_leave'
     
-    resources :customers,     only: [:show, :edit, :update]
+    resources :customers,     only: [:edit, :update]
     resources :addresses,     except: [:new, :show]
     
     resources :items,         only: [:index, :show] do
