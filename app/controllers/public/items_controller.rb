@@ -13,6 +13,7 @@ class Public::ItemsController < ApplicationController
         else
             redirect_to items_path
         end
+        @genres = Genre.all
     end 
 
     def genre
