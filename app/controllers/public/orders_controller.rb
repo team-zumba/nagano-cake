@@ -39,6 +39,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
+    redirect_to complete_orders_path
     
     
   end
