@@ -20,16 +20,16 @@ Admin.create!(
 
 
 ################### 顧客（山田太郎）
-5.times do |num| #num = 0~4が入る
+24.times do |num| #num = 0~4が入る
   num += 1
   Customer.create!(
     last_name: "山田",
     first_name: "太郎#{num}", #ループごとに太郎1~太郎10
     last_name_kana: 'ヤマダ',
     first_name_kana: "タロウ",
-    postal_code: "#{num}23-4567",
+    postal_code: 1000000 + num,
     address: "東京都新宿区ズンバタワー#{num}",
-    telephone_number: "090-123-456#{num}",
+    telephone_number: 10000000000 + num,
     email: "yamada@taro#{num}",
     encrypted_password: 'yamadataro',
     password: 'yamadataro',
@@ -40,22 +40,23 @@ end
 
 
 ################### 顧客（山田花子）
-4.times do |num|
-  num += 6
+yamada_num = Customer.all.count
+24.times do |num|
+  num += yamada_num + 1
   Customer.create!(
     last_name: "山田",
     first_name: "花子#{num}",
     last_name_kana: "ヤマダ",
     first_name_kana: "ハナコ",
-    postal_code: "#{num}23-4567",
+    postal_code: 1000000 + num,
     address: "東京都新宿区ズンバタワー#{num}",
-    telephone_number: "090-123-456#{num}",
+    telephone_number: 10000000000 + num,
     email: "yamada@hanako#{num}",
     encrypted_password: 'yamadahanako',
     password_confirmation: 'yamadahanako',
     password: 'yamadahanako',
     is_active: true
-    )
+  )
 end
 
 
@@ -67,7 +68,7 @@ end
     name: "株式会社ズンバ",
     address: "大阪府難波ずんずんマンション1",
     postal_code: "123-9876"
-    )
+  )
 end
 
 
