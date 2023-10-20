@@ -54,7 +54,7 @@ class Public::OrdersController < ApplicationController
     order.customer_id = current_customer.id #Orderに設定しているカラムに値を代入（ログインしている顧客のID）
     order.save #Orderに設定しているカラムに値を代入(保存)
     
-    cart_items = CartItem.where(customer_id: current_customer.id)
+    cart_items = CartItem.where(customer_id: current_customer.id) # 全顧客カートからログイン中の顧客のカートを抽出
     cart_items.each do |cart_item| # 商品の種類ごとにループされる
       order_detail = OrderDetail.new
       order_detail.order_id = order.id 

@@ -1,6 +1,7 @@
 <div class="container mt-5">
-<h3>注文履歴一覧</h3>
-    <table class="table">
+<h3 class="text-danger font-weight-bolder">注文履歴一覧</h3>
+    <table class="table mt-3">
+      <thead>
       <tr>
         <td>注文日</td>
         <td>配送先</td>
@@ -11,6 +12,8 @@
       </tr>
       <% @orders.each do |order| %>
     <tr>
+    </thead>
+    <tbody>
       <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= order.postal_code %><%= order.address %><%= order.name %></td>
       <td>
@@ -24,6 +27,7 @@
       <td><%= order.status %></td>
       <td><%= link_to "表示する", orders_path(order.id), class: "btn btn-info" %></td>
     </tr>
+    </tbody>
     <% end %>
     </table>
 </div>
