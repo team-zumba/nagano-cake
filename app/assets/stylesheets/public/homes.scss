@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .main-visual {
+  margin: 0 auto;
   position: relative;
   height: 65vh;
   max-width: 1400px;
@@ -63,7 +64,7 @@
       background-color: transparent;
       left: auto !important;
       right: 0;
-      width: 8px !important;
+      width: 10px !important;
 
       &-progressbar-fill {
         background-color: #dc3545 !important;
@@ -73,6 +74,8 @@
 
   &__text {
     background-color: rgba(255, 255, 255, 0.8);
+    border-right: 2px solid #dc3545;
+    border-bottom: 2px solid #dc3545;
     padding: 80px 60px;
     position: absolute;
     bottom: 0;
