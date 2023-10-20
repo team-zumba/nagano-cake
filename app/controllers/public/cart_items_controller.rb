@@ -7,19 +7,26 @@ class Public::CartItemsController < ApplicationController
     end
     
     def create
-        current_cart_item = CartItem.find_by(customer_id: current_customer.id, item_id: cart_items_params[:item_id])
-        if current_cart_item
-            # すでにカート内に同アイテムが存在する場合
-            current_cart_item.update(
-                amount: current_cart_item.amount.to_i + cart_items_params[:amount].to_i
-            )
+        # 前のフォームで数量が選択されているか判定
+        if cart_items_params[:amount] != ""
+            # 前のフォームで数量が選択されている場合
+            current_cart_item = CartItem.find_by(customer_id: current_customer.id, item_id: cart_items_params[:item_id])
+            if current_cart_item
+                # すでにカート内に同アイテムが存在する場合
+                current_cart_item.update(
+                    amount: current_cart_item.amount.to_i + cart_items_params[:amount].to_i
+                )
+            else
+                # カート内に同アイテムが存在しない場合
+                cart_item = CartItem.new(cart_items_params)
+                cart_item.customer_id = current_customer.id
+                cart_item.save
+            end
+            redirect_to cart_items_path, notice: "#{Item.find(cart_items_params[:item_id]).name}を#{cart_items_params[:amount]}個カートに追加しました。"
         else
-            # カート内に同アイテムが存在しない場合
-            cart_item = CartItem.new(cart_items_params)
-            cart_item.customer_id = current_customer.id
-            cart_item.save
+            # 前のフォームで数量が未選択の場合
+            redirect_to item_path(cart_items_params[:item_id]), alert: '数量を選択してください。'
         end
-        redirect_to cart_items_path, notice: "#{Item.find(cart_items_params[:item_id]).name}を#{cart_items_params[:amount]}個カートに追加しました。"
     end
 
     def update
