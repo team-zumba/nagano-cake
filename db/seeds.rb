@@ -173,7 +173,7 @@ items_array.each_with_index do |items, i|
       name: item,
       introduction: "#{item}の説明です。とても美味しいですよ。",
       genre_id: i,
-      price: 500,
+      price: (rand(1..50).to_s + '00').to_i,
       is_active: true
     )
     # 画像を登録
