@@ -51,7 +51,11 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#index', as: 'root'
 
-    resources :customers,     except: [:new, :create, :destroy]
+    resources :customers,     except: [:new, :create, :destroy] do
+      member do 
+         get 'orders' => 'orders#customer_index'
+      end 
+    end
     resources :genres,        except: [:new, :show, :destroy]
     resources :items,         except: [:destroy]
     resources :order_details, only: [:update]
