@@ -25,13 +25,10 @@ window.addEventListener('load', () => {
       el: '#new-items-swiper-pagination',
       type: 'progressbar'
     },
-    slidesPerView: 1.25,
+    slidesPerView: 2.25,
     breakpoints: {
-      767: {
-        slidesPerView: 1.75
-      },
       992: {
-        slidesPerView: 2.25
+        slidesPerView: 2.75
       },
       1200: {
         slidesPerView: 3.25
