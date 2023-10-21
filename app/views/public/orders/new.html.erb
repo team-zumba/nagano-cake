@@ -3,11 +3,11 @@
  <div class="mb-3 text-danger font-weight-bolder">
  <h3>注文情報入力</h3>
  </div>
-    <%= form_with model: @order, url: check_orders_path do |f|  %>
+   <%= form_with model: @order, url: check_orders_path do |f|  %>
     
   <h4>支払い方法</h4>
   <div>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
     <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
   </div> 
   <div class="mb-2">
@@ -48,7 +48,6 @@
   <div>
   <%= f.submit "確認画面へ進む",class: "btn btn-info text-center" %>
   </div>
-  
   <% end %>
  </div>   
 </div>    
