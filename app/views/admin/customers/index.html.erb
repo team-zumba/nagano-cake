@@ -1,9 +1,11 @@
-<div class="container">
-  <h2>会員情報</h2>
+<div class="container mt-3">
+  <div class="row">
+    <h2 class="bg-light py-1 px-4 h4">会員一覧</h2>
+  </div>
 
   <div class="row">
     <table class="table">
-      <thead>
+      <thead class="bg-light">
         <tr>
           <th>会員ID</th>
           <th>氏名</th>
@@ -20,9 +22,9 @@
             </td>
             <td><%= customer.email %></td>
             <% if customer.is_active? %>
-              <td class="text-success fw-bold">有効</td>
+              <td class="text-success font-weight-bold">有効</td>
             <% else %>
-              <td class="text-muted fw-bold">退会</td>
+              <td class="text-muted font-weight-bold">退会</td>
             <% end %>
           </tr>
         <% end %>
