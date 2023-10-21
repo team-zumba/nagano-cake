@@ -1,10 +1,12 @@
-<div class="container">
+<div class="container mt-3">
   <%= render 'layouts/errors', obj: @genre %>
 
   <div class="row">
-    <div class="col-12 col-md-7">
-      <h2>ジャンル編集</h2>
+    <h2 class="bg-light py-1 px-4 h4">ジャンル編集</h2>
+  </div>
 
+  <div class="row mt-5">
+    <div class="col-12 col-md-7">
       <%= form_with model: [:admin, @genre] do |f| %>
         <div class="form-group">
           <div class="row align-items-center">
@@ -15,7 +17,7 @@
               <%= f.text_field :name, class: 'form-control' %>
             </div>
             <div class="col-3 ml-auto">
-              <%= f.submit '変更を保存', class: 'btn btn-success' %>
+              <%= f.submit '変更を保存', class: 'btn btn-success btn-lg' %>
             </div>
           </div>
         </div>
