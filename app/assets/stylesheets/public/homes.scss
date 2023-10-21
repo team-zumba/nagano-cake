@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .main-visual {
+  margin: 0 auto;
   position: relative;
   height: 65vh;
   max-width: 1400px;
@@ -63,7 +64,7 @@
       background-color: transparent;
       left: auto !important;
       right: 0;
-      width: 8px !important;
+      width: 10px !important;
 
       &-progressbar-fill {
         background-color: #dc3545 !important;
@@ -73,6 +74,8 @@
 
   &__text {
     background-color: rgba(255, 255, 255, 0.8);
+    border-right: 2px solid #dc3545;
+    border-bottom: 2px solid #dc3545;
     padding: 80px 60px;
     position: absolute;
     bottom: 0;
@@ -98,6 +101,45 @@
     &-p {
       font-size: 14px;
       margin: 0;
+    }
+  }
+}
+
+#new-items-swiper-pagination.swiper-pagination {
+  background-color: rgba(0, 0, 0, 0.15);
+  top: auto !important;
+  bottom: 0;
+  height: 2px !important;
+
+  .swiper-pagination-progressbar-fill {
+    background-color: #dc3545 !important;
+  }
+}
+
+#new-items-swiper.swiper {
+  .card {
+    &-img-wrap {
+      position: relative;
+      padding-top: 72%;
+    }
+
+    &-img-top {
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    &-btn {
+      border-top-right-radius: 0 !important;
+      border-top-left-radius: 10px;
+      border-bottom-right-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+      position: absolute;
+      bottom: 0;
+      right: 0;
     }
   }
 }

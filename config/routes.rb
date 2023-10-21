@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     resources :genres,        except: [:new, :show, :destroy]
     resources :items,         except: [:destroy]
     resources :order_details, only: [:update]
-    resources :orders,        only: [:show, :update]
+    resources :orders,        only: [:show, :update, :index]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
