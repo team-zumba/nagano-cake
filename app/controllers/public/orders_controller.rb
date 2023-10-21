@@ -28,7 +28,7 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items = current_customer.cart_items.all
     @total = 0
-    @payment_method = params[:order][:payment_method] 
+    @order.payment_method = params[:order][:payment_method] 
     # if params[:order][:payment_method] == "credit_card"
     #   @payment_method = "クレジットカード"
     # else 
@@ -59,7 +59,7 @@ class Public::OrdersController < ApplicationController
       order_detail = OrderDetail.new
       order_detail.order_id = order.id 
       order_detail.item_id = cart_item.item.id
-      order_detail.price = cart_item.item.price
+      order_detail.price = cart_item.item.item_price
       order_detail.amount = cart_item.amount
       order_detail.making_status = 0
       order_detail.save

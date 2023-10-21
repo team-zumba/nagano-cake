@@ -24,8 +24,8 @@
         </ul>
       </td>
       <td><%= order.total_payment.to_s(:delimited) %></td>
-      <td><%= order.status %></td>
-      <td><%= link_to "表示する", orders_path(order.id), class: "btn btn-info" %></td>
+      <td><%= order.status_i18n %></td>
+      <td><%= link_to "表示する", order_path(order.id), class: "btn btn-info text-nowrap" %></td>
     </tr>
     </tbody>
     <% end %>
