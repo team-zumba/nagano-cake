@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="row bg-light mt-3">
+        <div class="col-md-2">注文履歴詳細</div>
+    </div>
+    
+    <div class="row my-3">
+        <div class="col-md-9">
+            <div class="row pb-2">
+                <div class="col-md-4">購入者</div>
+                <div class="col-md-8">
+                    <%= link_to admin_customer_path(@order) do %>
+                    <%= @order.customer.last_name + @order.customer.first_name %>
+                    <% end %>
+                </div>
+            </div>
+            
+            <div class="row pb-2">
+                <div class="col-md-4">注文日</div>
+                <div class="col-md-8"><%= @order.created_at.strftime('%Y/%m/%d') %></div>
+            </div>
+            
+            <div class="row pb-2">
+                <div class="col-md-4">配送先</div>
+                <div class="col-md-8"><%= @order.postal_code + @order.address + @order.name %></div>
+            </div>
+            
+            <div class="row pb-2">
+                <div class="col-md-4">支払い方法</div>
+                <div class="col-md-8"><%= @order.payment_method_i18n %></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">注文ステータス</div>
+                <div class="col-md-8">
+                    <%= form_with model: @order, url:admin_order_path(@order.id), method: :patch do |f| %>
+                        <%= f.select :status, [
+                            [Order.statuses_i18n[:unpaid], Order.statuses[:unpaid]],
+                            [Order.statuses_i18n[:payment_confirmed], Order.statuses[:payment_confirmed]],
+                            [Order.statuses_i18n[:making], Order.statuses[:making]],
+                            [Order.statuses_i18n[:shipping_in_process], Order.statuses[:shipping_in_process]],
+                            [Order.statuses_i18n[:shipping_complete], Order.statuses[:shipping_complete]]
+                        ] %>
+                        <%= f.submit '更新', class:"btn btn-success btn-sm mx-3" %>
+                    <% end %>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row bg-light py-2">
+                <div class="col-md-3"><strong>商品名</strong></div>
+                <div class="col-md-2"><strong>単価(税込)</strong></div>
+                <div class="col-md-2"><strong>数量</strong></div>
+                <div class="col-md-2"><strong>小計</strong></div>
+                <div class="col-md-3"><strong>制作ステータス</strong></div>
+            </div>
+            <div class="row">
+                <% @order_details.each do |order_detail| %>
+                    <div class="col-md-3"><%= order_detail.item.name %></div>
+                    <div class="col-md-2"><%= order_detail.item.item_price %></div>
+                    <div class="col-md-2"><%= order_detail.amount %></div>
+                    <div class="col-md-2"><%= order_detail.item.item_price * order_detail.amount %></div>
+                    <div class="col-md-3"></div>
+                <% end %>
+            </div>
+        </div>
+        
+        
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-6">商品合計</div>
+                <div class="col-md-6">
+                    <% @total_price = 0 %>
+                    <% @order_details.each do |order_detail| %>
+                        <%= @total_price += order_detail.price * order_detail.amount %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">送料</div>
+                <div class="col-md-6"><%= @order.shipping_cost %></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">請求金額合計</div>
+                    <% @total_price = 0 %>
+                    <% @order_details.each do |order_detail| %>
+                        <% @total_price += order_detail.price * order_detail.amount %>
+                    <% end %>
+                    <%= @total_price += @order.shipping_cost %>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+</div>
