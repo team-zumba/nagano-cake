@@ -48,7 +48,7 @@ class Public::OrdersController < ApplicationController
     order.name = params[:order][:name] #Orderに設定しているカラムに値を代入（name）
     order.postal_code = params[:order][:postal_code] #Orderに設定しているカラムに値を代入（postal_code）
     order.total_payment = params[:order][:total_payment] #Orderに設定しているカラムに値を代入（total_payment）
-    order.payment_method = params[:order][:payment_method] #Orderに設定しているカラムに値を代入（payment_method）
+    order.payment_method = Order.payment_methods[params[:order][:payment_method]] #Orderに設定しているカラムに値を代入（payment_method）
     order.shipping_cost = 800 #Orderに設定しているカラムに値を代入（送料）
     order.status = 0 #Orderに設定しているカラムに値を代入（ステータス）
     order.customer_id = current_customer.id #Orderに設定しているカラムに値を代入（ログインしている顧客のID）
