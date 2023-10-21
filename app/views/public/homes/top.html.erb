@@ -12,7 +12,7 @@
                   <p class="swiper-slide-p"><%= item.introduction %></p>
                   <p class="swiper-slide-p">¥<%= item.price %></p>
                   <div class="swiper-slide-link" data-swiper-parallax-x="100%">
-                    <%= link_to '商品ページへ', item_path(item.id), class: 'btn btn-danger btn-sm' %>
+                    <%= link_to '詳細ページへ', item_path(item.id), class: 'btn btn-danger btn-sm' %>
                   </div>
                 </div>
               </div>
@@ -31,7 +31,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container mt-5">
   <div class="row justify-content-between">
     <div class="col-md-3">
       <%= render 'public/genres/search-box' %>
@@ -40,28 +40,32 @@
       <div class="row">
         <div class="col-12">
           <h2>新着商品</h2>
+          <div id="new-items-swiper-pagination" class="swiper-pagination"></div>
         </div>
       </div>
       
-      <div class="row">
+      <div class="row mt-3">
         <div id="new-items-swiper" class="swiper">
           <div class="swiper-wrapper">
             <% @new_items.each do |item| %>
-              <div class="swiper-slide">
-                <div class="row">
-                  <%= image_tag item.image, size: "150x100" %>
+              <div class="swiper-slide card">
+                <div class="card-img-wrap">
+                  <%= image_tag item.image, class: "card-img-top" %>
                 </div>
-                <%= link_to item.name, item_path(item.id), class: 'swiper-slide-link' %>
-                <p class="swiper-slide-p"><%= item.introduction %></p>
-                <p class="swiper-slide-p">¥<%= item.price %></p>
+                <div class="card-body">
+                  <h3 class="card-title h6 font-weight-bold"><%= item.name %></h3>
+                  <p class="card-introduction"><%= item.introduction %></p>
+                  <p class="card-price">¥<%= item.price.to_s(:delimited) %></p>
+                </div>
+                <%= link_to '詳細ページへ', item_path(item.id), class: 'card-btn btn btn-outline-danger btn-sm pl-3' %>
               </div>
             <% end %>
           </div>
         </div>
       </div>
 
-      <div class="row justify-content-end">
-        <%= link_to '全ての商品を見る >', items_path %>
+      <div class="row mt-3 justify-content-end">
+        <%= link_to '全ての商品を見る >', items_path, class: 'btn btn-outline-primary' %>
       </div>
     </div>
   </div>

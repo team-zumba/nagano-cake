@@ -7,8 +7,8 @@ window.addEventListener('load', () => {
 
   const mainVisualSwiper = new Swiper('#main-visual-swiper', {
     pagination: {
-      el: ".main-visual .swiper-pagination",
-      type: "progressbar",
+      el: '.main-visual .swiper-pagination',
+      type: 'progressbar',
       progressbarOpposite: true
     },
     autoplay: {
@@ -21,7 +21,27 @@ window.addEventListener('load', () => {
   });
 
   const newItemsSwiper = new Swiper('#new-items-swiper', {
-    slidesPerView: 3.25,
+    pagination: {
+      el: '#new-items-swiper-pagination',
+      type: 'progressbar'
+    },
+    slidesPerView: 1.25,
+    breakpoints: {
+      767: {
+        slidesPerView: 1.75
+      },
+      992: {
+        slidesPerView: 2.25
+      },
+      1200: {
+        slidesPerView: 3.25
+      }
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    speed: 1500,
     spaceBetween: 20,
     grabCursor: true
   });
