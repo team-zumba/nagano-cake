@@ -1,9 +1,13 @@
-<div class="container">
+<div class="container mt-3">
   <%= render 'layouts/errors', obj: @customer %>
 
-  <h2><%= @customer.last_name + @customer.first_name %>の会員情報編集</h2>
-  
   <div class="row">
+    <h2 class="bg-light py-1 px-4 h4">
+      <%= @customer.last_name + @customer.first_name %>の会員情報編集
+    </h2>
+  </div>
+  
+  <div class="row mt-3">
     <div class="col-12">
       <%= form_with model: [:admin, @customer], method: :patch do |f| %>
         <div class="row form-group align-items-center">
