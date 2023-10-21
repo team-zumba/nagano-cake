@@ -37,7 +37,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :orders,        only: [:new, :create, :index] do
+    resources :orders,        only: [:new, :create, :index, :show] do
       collection do
         post :check
         get :complete
