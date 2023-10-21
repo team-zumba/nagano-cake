@@ -16,7 +16,7 @@
         <div class="col-md-4">
             <% @total_amount = 0 %>
             <% order.order_details.each do |order_detail| %>
-                <%= @total_amount += order_detail.amount %>
+                <% @total_amount += order_detail.amount %>
             <% end %>
             <%= @total_amount %>
         </div>
