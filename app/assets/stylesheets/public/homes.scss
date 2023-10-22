@@ -143,3 +143,17 @@
     }
   }
 }
+
+.about {
+  &__inner {
+    min-height: 90vh;
+  }
+
+  &__img-wrap {
+    height: 400px;
+  }
+
+  &__img {
+    object-fit: cover;
+  }
+}
