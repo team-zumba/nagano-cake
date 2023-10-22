@@ -16,25 +16,29 @@
                 <div class="col-md-2 px-0"><strong>ステータス</strong></div>
     </div>
 
-                <% @items.each do |item| %>
-                <div class="row justify-content-center mx-5 py-1">
-                        <div class="col-md-2"><%= item.id %></div>
-                        <div class="col-md-3">
-                            <%= link_to admin_item_path(item.id), style: "color: #000000" do %>
-                            <u><%= item.name %></u>
-                            <% end %>
-                        </div>
-                        <div class="col-md-2"><%= item.price %></div>
-                        <div class="col-md-2"><%= item.genre.name %></div>
-                        <div class="col-md-2 px-0">
-                            <% if item.is_active == true %>
-                            <p class="text-success"><%= "販売中" %></p>
-                            <% else %>
-                            <p><%= "販売停止中" %></p>
-                            <% end %>
-                        </div>
-                </div>
+    <% @items.each do |item| %>
+    <div class="row justify-content-center mx-5 py-1">
+            <div class="col-md-2"><%= item.id %></div>
+            <div class="col-md-3">
+                <%= link_to admin_item_path(item.id), style: "color: #000000" do %>
+                <u><%= item.name %></u>
                 <% end %>
+            </div>
+            <div class="col-md-2"><%= item.price %></div>
+            <div class="col-md-2"><%= item.genre.name %></div>
+            <div class="col-md-2 px-0">
+                <% if item.is_active == true %>
+                <p class="text-success"><%= "販売中" %></p>
+                <% else %>
+                <p><%= "販売停止中" %></p>
+                <% end %>
+            </div>
+    </div>
+    <% end %>
+    
+    <div class="row justify-content-center mt-3">
+        <%= paginate @items %>
+    </div>
 
     </div>
     </div>
