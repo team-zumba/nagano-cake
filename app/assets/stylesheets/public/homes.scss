@@ -45,7 +45,7 @@
         padding: 40px;
         position: absolute;
         top: 20px;
-        left: 40px;
+        left: 20px;
         max-width: 600px;
       }
 
@@ -141,5 +141,19 @@
       bottom: 0;
       right: 0;
     }
+  }
+}
+
+.about {
+  &__inner {
+    min-height: 90vh;
+  }
+
+  &__img-wrap {
+    height: 400px;
+  }
+
+  &__img {
+    object-fit: cover;
   }
 }
