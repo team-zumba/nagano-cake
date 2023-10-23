@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :items,         only: [:index, :show] do
       collection do
         get 'genres/:id' => 'items#genre', as: 'genre'
+        get 'search' => 'searches#items_search'
       end
     end
 
@@ -55,6 +56,9 @@ Rails.application.routes.draw do
       member do 
          get 'orders' => 'orders#customer_index'
       end 
+      collection do
+        get 'search' => 'searches#customers_search'
+      end
     end
     resources :genres,        except: [:new, :show, :destroy]
     resources :items,         except: [:destroy]
