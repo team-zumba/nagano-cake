@@ -24,6 +24,12 @@
   position: relative;
  }
 
+ header {
+  padding: 0 5vw;
+  position: relative;
+  z-index: 1;
+ }
+
  .search-form {
   &__text {
     font-size: 12px !important;
