@@ -29,10 +29,7 @@ window.addEventListener('load', () => {
     centeredSlides : true,
     breakpoints: {
       576: {
-        centeredSlides : false
-      },
-      992: {
-        slidesPerView: 2.75,
+        slidesPerView: 2.25,
         centeredSlides : false
       },
       1200: {
