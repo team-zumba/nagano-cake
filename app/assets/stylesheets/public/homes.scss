@@ -147,7 +147,12 @@
 
 .about {
   &__inner {
-    min-height: 90vh;
+    min-height: 80vh;
+  }
+
+  &__heading {
+    font-size: 80px;
+    font-family: Cherry Bomb One;
   }
 
   &__img-wrap {
