@@ -27,7 +27,9 @@ class Public::CustomersController < ApplicationController
     
     def leave
         current_customer.update(is_active: false)
-        # flash[:notice] = "退会しました。"
+        # セッションをリセット
+        ## ログインはセッションで管理されているので、そのデータを削除
+        reset_session
         redirect_to root_path, notice: "退会しました。"
     end 
     
@@ -36,7 +38,4 @@ class Public::CustomersController < ApplicationController
     def customer_params
         params.require(:customer).permit(:email, :last_name, :first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :telephone_number)
     end 
-    
-    
-
 end
