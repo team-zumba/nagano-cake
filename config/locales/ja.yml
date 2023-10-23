@@ -27,6 +27,8 @@ ja:
           address: "住所"
           telephone_number: "電話番号"
           email: "メールアドレス"
+          last_name_kana: "姓カナ"
+          first_name_kana: "名カナ"
 
     errors:
       models:
