@@ -10,10 +10,7 @@ ja:
         making: "製作中"
         shipping_in_process: "発送準備中"
         shipping_complete: "発送済み"
-        
-ja:
-  enums:
-    order_details:
+    order_detail:
       making_status:
         making_unable: "着手不可"
         waiting_for_making: "製作不可"
