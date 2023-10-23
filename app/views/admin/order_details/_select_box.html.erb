@@ -1,0 +1,11 @@
+<div>
+<%= form_with model: @order_detail, url:admin_order_details_path(@order_detail.id), method: :patch do |f| %>
+  <%= f.select :making_status, [
+      [Order.statuses_i18n[:making_unable], :making_unable],
+      [Order.statuses_i18n[:waiting_for_making], :waiting_for_making],
+      [Order.statuses_i18n[:in_making], :in_making],
+      [Order.statuses_i18n[:making_completed], :making_completed]
+  ] %>
+  <%= f.submit '更新', class:"btn btn-success btn-sm mx-3" %>
+<% end %>
+</div>
