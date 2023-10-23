@@ -35,6 +35,11 @@ ja:
           email: "メールアドレス"
           last_name_kana: "姓カナ"
           first_name_kana: "名カナ"
+        item:
+          genre: "ジャンル"
+          name: "商品名"
+          introduction: "商品説明"
+          price: "価格"
 
     errors:
       models:
