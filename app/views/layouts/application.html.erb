@@ -16,8 +16,8 @@
   </head>
 
   <body>
-    <header>
-      <nav class="container-fluid bg-danger">
+    <header class="bg-danger">
+      <nav class="container-fluid">
         <div class="row item-align-center px-3 justify-content-between">
         <div class="col-md-2 logo h3 text-white" style="font-family: Cherry Bomb One;">ながのCAKE</div>  
         <% if request.fullpath.include?("/admin") && admin_signed_in? %>
@@ -52,7 +52,6 @@
       <% else %>
         <%= render 'layouts/search-box', type: 'items' %>
       <% end %>
-
     </header>
 
     <%= render 'layouts/flash' %>
