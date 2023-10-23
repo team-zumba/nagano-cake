@@ -46,6 +46,13 @@
         <% end %>
       </div>
       </nav>
+
+      <% if request.fullpath.include?("/admin") && admin_signed_in? %>
+        <%= render 'layouts/search-box', type: 'customers' %>
+      <% else %>
+        <%= render 'layouts/search-box', type: 'items' %>
+      <% end %>
+
     </header>
 
     <%= render 'layouts/flash' %>
