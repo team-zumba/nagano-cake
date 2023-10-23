@@ -53,9 +53,9 @@
             </div>
             <div class="row">
               <% if request.fullpath.include?("/admin") && admin_signed_in? %>
-                <%= render 'layouts/search-box', type: 'customers' %>
+                <%= render 'layouts/search-form', type: 'customers' %>
               <% else %>
-                <%= render 'layouts/search-box', type: 'items' %>
+                <%= render 'layouts/search-form', type: 'items' %>
               <% end %>
             </div>
           </div>
