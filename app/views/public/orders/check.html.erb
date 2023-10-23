@@ -42,7 +42,9 @@
   
   <div class="mt-2 mb-2">
   <h4 class="text-danger font-weight-bolder">お届け先</h4>
+  〒<%= @order.postal_code %>
   <%= @order.address %>
+  <%= @order.name %>
   <%= form_with model: @order, url: orders_path , local: true do |f| %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :address %>

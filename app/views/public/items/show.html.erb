@@ -12,7 +12,7 @@
                         <p><%= @item.introduction %></p>
                         </br>
                         </br>
-                        <p><strong>¥<%= @item.item_price.round(0) %>(税込)</strong></p>
+                        <p><strong>¥<%= @item.item_price.round(0).to_s(:delimited) %>(税込)</strong></p>
                         </div>
                     </div>
                 </div>
