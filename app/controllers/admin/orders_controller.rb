@@ -2,6 +2,7 @@ class Admin::OrdersController < ApplicationController
     
     def customer_index
         @customer = Customer.find(params[:id])
+        @orders = @customer.orders.page(params[:page])
     end 
     
     def show
