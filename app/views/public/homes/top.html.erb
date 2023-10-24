@@ -47,7 +47,9 @@
             <% @new_items.each do |item| %>
               <div class="swiper-slide card">
                 <div class="card-img-wrap">
-                  <%= image_tag item.image, class: "card-img-top" %>
+                  <%= link_to item_path(item.id) do %>
+                    <%= image_tag item.image, class: "card-img-top" %>
+                  <% end %>
                 </div>
                 <div class="card-body">
                   <h3 class="card-title h6 font-weight-bold"><%= item.name %></h3>
