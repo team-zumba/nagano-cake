@@ -4,8 +4,8 @@ class Admin::OrderDetailsController < ApplicationController
     @order_detail = OrderDetail.find(params[:id])
     @order_detail.update(making_status: params[:order_detail][:making_status])
     order = @order_detail.order
-    if params[:order_detail][:making_status] == "waiting_for_making"
-       order.update(status:"payment_confirmed")
+    if params[:order_detail][:making_status] == "in_making"
+       order.update(status:"making")
     end
     
     if is_all_order_details_making_completed(order)
