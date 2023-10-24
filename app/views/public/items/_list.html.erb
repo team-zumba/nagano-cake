@@ -4,7 +4,9 @@
 <div class="row row-cols-4">
     <% @items.each do |item| %>
     <div class="d-block">
+        <%= link_to item_path(item) do %>
         <%= image_tag item.image, size: "150x100" %>
+        <% end %>
         </br>
         <%= link_to item.name, item_path(item.id) %>
         </br>
