@@ -5,16 +5,17 @@
 .main-visual {
   margin: 0 auto;
   position: relative;
-  height: 65vh;
+  height: 70vh;
   max-width: 1400px;
+  z-index: 0;
 
   @media screen and (max-width: 991px) {
-    height: 70vh;
+    height: 75vh;
   }
 
   .swiper {
     position: relative;
-    height: 55vh;
+    height: 60vh;
     width: 100%;
     max-width: 1200px;
 
@@ -64,7 +65,7 @@
       background-color: transparent;
       left: auto !important;
       right: 0;
-      width: 10px !important;
+      width: 14px !important;
 
       &-progressbar-fill {
         background-color: #dc3545 !important;
@@ -146,7 +147,12 @@
 
 .about {
   &__inner {
-    min-height: 90vh;
+    min-height: 80vh;
+  }
+
+  &__heading {
+    font-size: 80px;
+    font-family: Cherry Bomb One;
   }
 
   &__img-wrap {
