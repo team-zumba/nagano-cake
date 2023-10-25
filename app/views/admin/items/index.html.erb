@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <p class="col-md-1 bg-light text-center mt-3">商品一覧</p>
+        <div class="col-md-1 offset-9 align-items-center pt-3">
+            <%= link_to new_admin_item_path, style: "color: #dc3545; font-size: 20px" do %>
+            <i class="fa-solid fa-circle-plus fa-xl"></i>
+            <% end %>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center bg-light mx-5 border-top py-2">
+                <div class="col-md-2"><strong>商品ID</strong></div>
+                <div class="col-md-3"><strong>商品名</strong></div>
+                <div class="col-md-2"><strong>税抜価格</strong></div>
+                <div class="col-md-2"><strong>ジャンル</strong></div>
+                <div class="col-md-2 px-0"><strong>ステータス</strong></div>
+    </div>
+
+    <% @items.each do |item| %>
+    <div class="row justify-content-center mx-5 py-1">
+            <div class="col-md-2"><%= item.id %></div>
+            <div class="col-md-3">
+                <%= link_to admin_item_path(item.id), style: "color: #000000" do %>
+                <u><%= item.name %></u>
+                <% end %>
+            </div>
+            <div class="col-md-2"><%= item.price %></div>
+            <div class="col-md-2"><%= item.genre.name %></div>
+            <div class="col-md-2 px-0">
+                <% if item.is_active == true %>
+                <p class="text-success"><%= "販売中" %></p>
+                <% else %>
+                <p><%= "販売停止中" %></p>
+                <% end %>
+            </div>
+    </div>
+    <% end %>
+    
+    <div class="row justify-content-center mt-3">
+        <%= paginate @items %>
+    </div>
+
+    </div>
+    </div>
+    
+    
+</div>

@@ -1,0 +1,165 @@
+// Place all the styles related to the public/homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.main-visual {
+  margin: 0 auto;
+  position: relative;
+  height: 70vh;
+  max-width: 1400px;
+  z-index: 0;
+
+  @media screen and (max-width: 991px) {
+    height: 75vh;
+  }
+
+  .swiper {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    max-width: 1200px;
+
+    &-slide {
+      overflow: hidden;
+
+      &-bg {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        width: 100%;
+
+        &::after {
+          content: '';
+          background-color: black;
+          opacity: 0.25;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      &-inner {
+        color: white;
+        padding: 40px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        max-width: 600px;
+      }
+
+      &-heading {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      &-p {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+    }
+
+    &-pagination {
+      background-color: transparent;
+      left: auto !important;
+      right: 0;
+      width: 14px !important;
+
+      &-progressbar-fill {
+        background-color: #dc3545 !important;
+      }
+    }
+  }
+
+  &__text {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-right: 2px solid #dc3545;
+    border-bottom: 2px solid #dc3545;
+    padding: 80px 60px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    z-index: 1;
+
+    @media screen and (max-width: 991px) {
+      padding-top: calc( 80px + ( 7vw - 70px ) );
+      padding-bottom: calc( 80px + ( 7vw - 70px ) );
+      padding-right: calc( 60px + ( 5vw - 50px ) );
+      padding-left: calc( 60px + ( 5vw - 50px ) );
+    }
+
+    &-heading {
+      font-size: 60px;
+
+      @media screen and (max-width: 991px) {
+        font-size: calc( 50px + ( 4vw - 40px ) );
+      }
+    }
+
+    &-p {
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+}
+
+#new-items-swiper-pagination.swiper-pagination {
+  background-color: rgba(0, 0, 0, 0.15);
+  top: auto !important;
+  bottom: 0;
+  height: 2px !important;
+
+  .swiper-pagination-progressbar-fill {
+    background-color: #dc3545 !important;
+  }
+}
+
+#new-items-swiper.swiper {
+  .card {
+    &-img-wrap {
+      position: relative;
+      padding-top: 72%;
+    }
+
+    &-img-top {
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    &-btn {
+      border-top-right-radius: 0 !important;
+      border-top-left-radius: 10px;
+      border-bottom-right-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+.about {
+  &__inner {
+    min-height: 80vh;
+  }
+
+  &__heading {
+    font-size: 80px;
+    font-family: Cherry Bomb One;
+  }
+
+  &__img-wrap {
+    height: 400px;
+  }
+
+  &__img {
+    object-fit: cover;
+  }
+}

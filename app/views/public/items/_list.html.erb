@@ -1,0 +1,19 @@
+<div>
+    <h4><%= items_name %>一覧 全<%= @items.count %>件</h4>
+</div>
+<div class="row row-cols-4">
+    <% @items.each do |item| %>
+    <div class="d-block">
+        <%= link_to item_path(item) do %>
+        <%= image_tag item.image, size: "150x100" %>
+        <% end %>
+        </br>
+        <%= link_to item.name, item_path(item.id) %>
+        </br>
+        ¥<%= item.item_price.to_s(:delimited) %>
+    </div>
+    <% end %>
+</div>
+<div class="row justify-content-center mt-3">
+        <%= paginate @items %>
+</div>

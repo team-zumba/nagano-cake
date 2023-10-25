@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12 col-xl-10 px-0">
+      <div class="main-visual">
+        <div id="main-visual-swiper" class="swiper">
+          <div class="swiper-wrapper">
+            <% @rand_items.each do |item| %>
+              <div class="swiper-slide">
+                <div class="swiper-slide-bg" style="background-image: url(<%= rails_blob_path(item.image) %>)" data-swiper-parallax-x="90%"></div>
+                <div class="swiper-slide-inner">
+                  <p class="swiper-slide-heading"><%= item.name %></p>
+                  <p class="swiper-slide-p"><%= item.introduction %></p>
+                  <p class="swiper-slide-p">¥<%= item.item_price.to_s(:delimited) %></p>
+                  <div class="swiper-slide-link" data-swiper-parallax-x="100%">
+                    <%= link_to '詳細ページへ', item_path(item.id), class: 'btn btn-danger btn-sm' %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="main-visual__text">
+          <div class="swiper-pagination"></div>
+          <p class="main-visual__text-heading">ようこそ、<br>ながのCAKEへ！</p>
+          <p class="main-visual__text-p">このサイトは、ケーキ販売のECサイトになります。</p>
+          <p class="main-visual__text-p">会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要です。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row flex-sm-row-reverse justify-content-between">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-12">
+          <h2>新着商品</h2>
+          <div id="new-items-swiper-pagination" class="swiper-pagination"></div>
+        </div>
+      </div>
+      
+      <div class="row mt-3">
+        <div id="new-items-swiper" class="swiper">
+          <div class="swiper-wrapper">
+            <% @new_items.each do |item| %>
+              <div class="swiper-slide card">
+                <div class="card-img-wrap">
+                  <%= link_to item_path(item.id) do %>
+                    <%= image_tag item.image, class: "card-img-top" %>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title h6 font-weight-bold"><%= item.name %></h3>
+                  <p class="card-introduction"><%= item.introduction %></p>
+                  <p class="card-price">¥<%= item.price.to_s(:delimited) %></p>
+                </div>
+                <%= link_to '詳細ページへ', item_path(item.id), class: 'card-btn btn btn-outline-danger btn-sm pl-3' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3 justify-content-end">
+        <%= link_to '全ての商品を見る >', items_path, class: 'btn btn-outline-primary' %>
+      </div>
+    </div>
+    <div class="col-md-3 mt-md-0 mt-5">
+      <%= render 'public/genres/search-box' %>
+    </div>
+  </div>
+</div>

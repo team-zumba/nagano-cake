@@ -1,0 +1,37 @@
+<div class="col-12">
+  <div class="row justify-content-end">
+      <% if type == 'items' %>
+        <%= form_with url: search_items_path, class: 'search-form',method: :get do |f| %>
+          <div class="col-12">
+            <div class="row align-items-center pr-4 pb-1
+">
+              <div class="pr-1">
+                <%= f.text_field :word, class: 'form-control search-form__text', placeholder: '商品を検索' %>
+              </div>
+              <div>
+                <%= button_tag type: 'submit', class: 'btn btn-light search-form__submit' do %>
+                  <i class="fa-solid fa-magnifying-glass text-danger"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% elsif type == 'customers' %>
+        <%= form_with url: search_admin_customers_path, method: :get do |f| %>
+          <div class="col-12">
+            <div class="row align-items-center pr-4 pb-1
+">
+              <div class="pr-1">
+                <%= f.text_field :word, class: 'form-control search-form__text', placeholder: 'ユーザーを検索' %>
+              </div>
+              <div>
+                <%= button_tag type: 'submit', class: 'btn btn-light search-form__submit' do %>
+                  <i class="fa-solid fa-magnifying-glass text-danger"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>
